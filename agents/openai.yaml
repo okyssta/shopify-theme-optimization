@@ -1,0 +1,4 @@
+interface:
+  display_name: Shopify Theme Optimization
+  short_description: Speed up Shopify themes safely without hurting conversion UX.
+  default_prompt: Audit this Shopify theme for performance bottlenecks and propose safe, conversion-preserving optimizations.
