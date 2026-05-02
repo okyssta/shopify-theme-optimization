@@ -4,8 +4,6 @@ A portable Agent Skill for optimizing Shopify themes for speed, Core Web Vitals,
 
 - Name: `shopify-theme-optimization`
 - Author: Kyssta
-- Entry point: `SKILL.md`
-- Compatible format: OpenAI/ChatGPT/Codex skills, Claude Code skills, and skills.sh-style `SKILL.md` skill directories.
 
 ## What it helps agents do
 
@@ -14,31 +12,34 @@ A portable Agent Skill for optimizing Shopify themes for speed, Core Web Vitals,
 - Apply safe fixes without changing the store's visible UI, overlay behavior, cart/checkout flow, analytics, or conversion logic unless explicitly requested.
 - Produce clear implementation plans and post-change verification summaries.
 
-## Useful commands
+## Agent shortcuts
+
+Use any of these in an agent chat after installing the skill:
+
+```text
+$shopify-theme-optimization audit ./theme
+$shopifyoptimize fix ./theme
+/shopifyoptimize audit ./theme
+/shopifyoptimize fix ./theme
+/shopifyoptimize diagnose ./lighthouse-report.json
+/shopifyoptimize verify ./theme
+/optimize shopify inventory ./theme.zip
+shopifyoptimize report ./theme
+```
+
+Typo aliases such as `shopifyoptimze` and `shopfityoptimze` are included so the skill still triggers.
+
+## Install
+
+```bash
+npx skills add https://github.com/kyssta-exe/shopify-theme-optimization --skill shopify-theme-optimization -a codex
+npx skills add https://github.com/kyssta-exe/shopify-theme-optimization --skill shopify-theme-optimization -a claude-code -a cursor
+```
+
+## Bundled tools
 
 ```bash
 python scripts/theme_audit.py /path/to/theme --format markdown
 python scripts/image_inventory.py /path/to/theme --format markdown
 python scripts/minify_assets.py /path/to/theme
-./skill.sh validate
 ```
-
-## Install
-
-With the skills.sh CLI:
-
-```bash
-npx skills add https://github.com/<owner>/shopify-theme-optimization --skill shopify-theme-optimization -a codex
-npx skills add https://github.com/<owner>/shopify-theme-optimization --skill shopify-theme-optimization -a claude-code -a cursor
-```
-
-From a local clone:
-
-```bash
-./skill.sh install --project --agent codex
-./skill.sh install --global --agent claude-code
-./skill.sh install --project --agent all
-./skill.sh package .
-```
-
-For ChatGPT/OpenAI products, upload `skill.zip` where custom skills are supported. For skills.sh, publish this folder in a Git repository; the CLI discovers repositories and directories that contain a valid `SKILL.md`.

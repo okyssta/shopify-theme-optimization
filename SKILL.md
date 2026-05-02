@@ -1,6 +1,6 @@
 ---
 name: shopify-theme-optimization
-description: optimize shopify themes for speed, core web vitals, liquid efficiency, asset loading, javascript/css weight, image delivery, third-party scripts, and conversion-safe storefront performance. use when auditing or modifying shopify theme repositories, theme zip files, liquid templates, sections, snippets, assets, app embeds, lighthouse/page speed issues, lcp/cls/inp problems, slow product/collection/home pages, or requests to make a shopify store faster without changing its visual ui, overlays, merchandising, checkout path, tracking, or conversion behavior unless explicitly approved.
+description: optimize shopify themes for speed, core web vitals, liquid efficiency, asset loading, javascript/css weight, image delivery, third-party scripts, and conversion-safe storefront performance. use when auditing or modifying shopify theme repositories, theme zip files, liquid templates, sections, snippets, assets, app embeds, lighthouse/page speed issues, lcp/cls/inp problems, slow product/collection/home pages, or requests to make a shopify store faster without changing its visual ui, overlays, merchandising, checkout path, tracking, or conversion behavior unless explicitly approved. trigger on shortcuts such as $shopify-theme-optimization, $shopifyoptimize, /shopifyoptimize, /shopify-optimize, /optimize shopify, shopifyoptimize, shopifyoptimze, shopfityoptimze, and shopify performance audit/fix/diagnose/verify requests.
 ---
 
 # Shopify Theme Optimization
@@ -10,6 +10,28 @@ Made by Kyssta.
 ## Operating principle
 
 Optimize performance without damaging the storefront's conversion system. Treat layout, merchandising hierarchy, app-driven UI, overlays, cart/checkout flows, tracking, accessibility, and brand presentation as protected unless the user explicitly asks to change them.
+
+## Shortcut commands
+
+Treat these as explicit invocations of this skill:
+- `$shopify-theme-optimization [mode] [target]`
+- `$shopifyoptimize [mode] [target]`
+- `/shopifyoptimize [mode] [target]`
+- `/shopify-optimize [mode] [target]`
+- `/optimize shopify [mode] [target]`
+- `shopifyoptimize [mode] [target]`
+- `shopifyoptimze [mode] [target]`
+- `shopfityoptimze [mode] [target]`
+
+Modes:
+- `audit`: inspect a theme directory, theme zip, repo, URL, or report; produce prioritized findings without editing.
+- `diagnose` or `diagnosis`: explain root causes for known Lighthouse/PageSpeed/Core Web Vitals issues and map them to theme files when possible.
+- `fix`: implement safe, conversion-preserving patches. Run an audit first if no current baseline exists.
+- `verify`: rerun audits/checks, compare before/after evidence, and list remaining risks.
+- `report`: format findings and completed work using `references/audit-report-template.md`.
+- `inventory`: run image/asset inventory and identify oversized or poorly loaded assets.
+
+If mode is missing, default to `audit`. If target is missing, inspect the current repository when it looks like a Shopify theme; otherwise ask for a theme path, zip, URL, or report.
 
 ## Default workflow
 
@@ -40,7 +62,6 @@ Optimize performance without damaging the storefront's conversion system. Treat 
 - Conversion, UX, analytics, and app safety rules: `references/conversion-safety.md`.
 - Known issue library: `references/common-issues.md`.
 - Report format: `references/audit-report-template.md`.
-- Installation and cross-agent notes: `references/tooling-and-agent-installation.md`.
 
 ## Bundled scripts
 
@@ -52,7 +73,6 @@ python scripts/theme_audit.py /path/to/theme.zip --format json --out audit.json
 python scripts/image_inventory.py /path/to/theme --format markdown
 python scripts/minify_assets.py /path/to/theme          # dry run
 python scripts/minify_assets.py /path/to/theme --write  # creates .bak files by default
-./skill.sh validate
 ```
 
 Script rules:
