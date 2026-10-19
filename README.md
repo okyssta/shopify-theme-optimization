@@ -32,8 +32,8 @@ Typo aliases such as `shopifyoptimze` and `shopfityoptimze` are included so the 
 ## Install
 
 ```bash
-npx skills add https://github.com/kyssta-exe/shopify-theme-optimization --skill shopify-theme-optimization -a codex
-npx skills add https://github.com/kyssta-exe/shopify-theme-optimization --skill shopify-theme-optimization -a claude-code -a cursor
+npx skills add https://github.com/okyssta/shopify-theme-optimization --skill shopify-theme-optimization -a codex
+npx skills add https://github.com/okyssta/shopify-theme-optimization --skill shopify-theme-optimization -a claude-code -a cursor
 ```
 
 ## Bundled tools
